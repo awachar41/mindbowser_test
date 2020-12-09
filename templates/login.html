@@ -1,0 +1,43 @@
+{% load static %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" id="bootstrap-css" rel="stylesheet">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link crossorigin="anonymous" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" rel="stylesheet"/>
+<link href="{% static 'login.css' %}" rel="stylesheet">
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+
+            <i class="fas fa-user p-2" style="font-size:70px;"></i>
+        </div>
+
+        <!-- Login Form -->
+        <form action="{% url 'managers:user_login' %}" method="post">{% csrf_token %}
+            <input class="fadeIn second" id="login" name="{{login_form.email.name}}" placeholder="Email"
+                   type="email" value="{{login_form.email.value|default_if_none:''}}">
+
+            <input class="fadeIn third" id="password" name="{{login_form.password.name}}" placeholder="password"
+                   type="password" value="{{login_form.password.value|default_if_none:''}}">
+            <input class="fadeIn fourth" type="submit" value="Log In">
+
+        </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li %} %} class="{{ message.tags }}" endif ifmessage.tags {% {%>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        Don't have account? <a href="{% url 'managers:signup' %}">Register</a>
+
+        <!-- Remind Passowrd -->
+
+    </div>
+</div>

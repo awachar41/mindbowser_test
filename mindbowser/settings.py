@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'm5nykjm$se-za%@a1f1+g!vb3v$kbuz8_)lecrsmuy8bg1^t7z'
+SECRET_KEY = '+ox2h@o8qhcj64uvq5vo(c*o3n(#f+bgn07$v9m^w*qkc)86mh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -51,10 +51,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mindbowser.urls'
 
+AUTH_USER_MODEL = 'managers.Users'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,3 +120,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
