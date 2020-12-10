@@ -155,7 +155,7 @@ table.table .avatar {
     </style>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function(){ 	// delete emp
             $(document).on("click", ".open-DeleteEmp", function () {
                 var $this = $(this),
                     emp_id = $this.data("id");
@@ -164,12 +164,13 @@ table.table .avatar {
                     $(document.createElement('a')).prop({
                         href: '/dashboard/delete-employee/'+emp_id+'/',
                         class: 'fa fa-trash text-dark',
-                        style: 'font-size:25px;',
+                        style: 'font-size:30px;',
 
                     })
                 );
             });
-
+		
+		// update emp
             $(document).on("click", ".open-UpdateEmp", function () {
                 var $this = $(this),
                     emp_id = $this.data("id");
@@ -331,11 +332,6 @@ table.table .avatar {
                         {{update_emp_form.last_name.errors}}
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
-                        {{update_emp_form.email}}
-                        {{update_emp_form.email.errors}}
-                    </div>
-                    <div class="form-group">
                         <label>Address</label>
                         {{update_emp_form.address}}
                         <!--                        not mandatory for error-->
@@ -359,11 +355,6 @@ table.table .avatar {
                         <label>Company</label>
                         {{update_emp_form.company}}
                         {{update_emp_form.company.errors}}
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        {{update_emp_form.password}}
-                        {{update_emp_form.password.errors}}
                     </div>
                 </div>
                 <div class="modal-footer">
