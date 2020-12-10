@@ -6,7 +6,9 @@ from django.views.decorators.http import require_POST, require_GET
 from employees.forms import EmployeeForm
 from managers.models import Users
 
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def dashboard(request):
     employee_form = EmployeeForm(request.POST or None)
     employee_data = Users.objects.filter(is_employee=True)
@@ -42,9 +44,9 @@ def delete_emp(request, emp_id=None):
     emp_obj = Users.objects.get(id=emp_id)
     emp_obj.delete()
     messages.success(request, 'Employee deleted.')
-    return redirect('/dashboard')
+    return redirect('/dashboard/')
 
-
+@login_required
 @require_GET
 def update_emp(request, emp_id=None):
     employee_form = EmployeeForm(request.POST or None)
