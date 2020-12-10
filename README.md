@@ -6,4 +6,6 @@ pip install -r requirements.txt
 
 configure mysql database in settings
 
+Done all required tasks with exception handling
+
 Thank you.
