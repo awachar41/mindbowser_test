@@ -1,14 +1,14 @@
 # Create your views here.
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST, require_GET
 
 from employees.forms import EmployeeForm
 from managers.models import Users
 
-from django.contrib.auth.decorators import login_required
 
-@login_required
+@login_required(login_url='/')
 def dashboard(request):
     employee_form = EmployeeForm(request.POST or None)
     employee_data = Users.objects.filter(is_employee=True)
@@ -46,7 +46,8 @@ def delete_emp(request, emp_id=None):
     messages.success(request, 'Employee deleted.')
     return redirect('/dashboard/')
 
-@login_required
+
+@login_required(login_url='/')
 @require_GET
 def update_emp(request, emp_id=None):
     employee_form = EmployeeForm(request.POST or None)
