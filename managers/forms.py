@@ -49,6 +49,6 @@ class UserFormLogin(forms.Form):
             pwd = Users.objects.get(email=email)
             if not pwd.check_password(password):
                 raise forms.ValidationError("invalid password")
-            if not user.is_manager:
-                raise forms.ValidationError("Not authorize to access!")
+#             if not user.is_manager:
+#                 raise forms.ValidationError("Not authorize to access!")
         return self.cleaned_data
