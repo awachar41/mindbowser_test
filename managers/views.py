@@ -57,6 +57,7 @@ def user_login(request):
                 return redirect('/dashboard/')
             else:
                 messages.errors(request, 'Opps! Employee login is currently unavailable')
+                return redirect('/')
         else:
             messages.success(request, 'Incorrect Username Or Password')
             return redirect('/')
