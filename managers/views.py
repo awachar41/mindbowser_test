@@ -56,7 +56,7 @@ def user_login(request):
             if user.is_manager:
                 return redirect('/dashboard/')
             else:
-                messages.errors(request, 'Opps! Employee login is currently unavailable')
+                messages.error(request, 'Opps! Employee login is currently unavailable')
                 return redirect('/')
         else:
             messages.success(request, 'Incorrect Username Or Password')
