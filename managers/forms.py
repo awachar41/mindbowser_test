@@ -3,10 +3,10 @@ from django.contrib.auth import authenticate
 
 from managers.models import Users
 
-
+# user creation form
 class UserForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': ' Full Name', 'class': "form-control form-control-sm"}), max_length=55, required=True)
+        attrs={'placeholder': ' First Name', 'class': "form-control form-control-sm"}), max_length=55, required=True)
     last_name = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder': ' Last Name', 'class': "form-control form-control-sm"}), max_length=55, required=True)
     company = forms.CharField(widget=forms.TextInput(
@@ -22,10 +22,6 @@ class UserForm(forms.ModelForm):
                                                            'class': "form-control form-control-sm"}),
                               required=False)
 
-    # mobile = PhoneNumberField(widget=forms.TextInput(attrs={'placeholder': ' Mobile No  *',
-    #                                                        'class': "form-control form-control-sm"}),
-    #                          help_text='Must include international prefix - e.g. +1 555 555 55555')
-
     class Meta:
         model = Users
         fields = ('first_name', 'last_name', 'dob', 'company', 'address', 'password', 'email')
@@ -38,6 +34,7 @@ class UserForm(forms.ModelForm):
         return email
 
 
+# login form
 class UserFormLogin(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
